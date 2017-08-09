@@ -18,6 +18,17 @@ app.post('/todos', function(req, res){
         res.status(400).send(err.message);
      });
 });
+app.get('/todos', function(req, res){
+ 
+    todo.find().then((data) => {
+        res.send({
+            data,
+            staus:200,
+        });
+    } , (err) => {
+        res.status(400).send(err);
+    });
+});
 
 app.listen(3000, function(){
     console.log('------running------');
